@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Accept a card payment</title>
+
+    <meta name="description" content="A demo of a card payment on Stripe" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script src="https://trello.com/1/client.js?key=0bbc9033603e68ca1d133bb85fe9504e"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+  </head>
+  <body>
+
+    <form id="payment-form" autocomplete="off">
+      <div style="color:#6d6d6d;padding-bottom:10px;" id="plan"></div>
+      <input
+        required
+        placeholder="Enter email address"
+        style="margin-top:20px;"
+        class="mail-input"
+        name="email"
+        type="email"
+        id="email"
+        oninput="handleChange(event)"
+      />
+      <div id="card-element" style="margin-top:10px;margin-bottom:20px;">
+      </div>
+      <button id="submit">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay</span>
+      </button>
+      <p id="card-error" role="alert"></p>
+      <p class="result-message hidden">
+        Payment succeeded, see the result in your
+        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay
+        again.
+      </p>
+    </form>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
+

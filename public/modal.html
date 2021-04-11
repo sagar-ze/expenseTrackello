@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
+    <link rel="stylesheet" href="./css/card-back-section.css" />
+
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  </head>
+  <body>
+    <div id="c">
+      <form id="form" onsubmit="handleSubmit(event)" autocomplete="off">
+        <div class="header">
+          <label style="margin-right: 25px">Label </label>
+          <input
+            id="name"
+            name="name"
+            oninput="handleChange(event)"
+            style="width: 100%"
+            type="text"
+            maxlength="45"
+            size="45"
+            required
+          />
+        </div>
+        <div class="header">
+          <label style="margin-right: 10px">Amount</label>
+          <input
+            id="amount"
+            name="amount"
+            type="number"
+            step="any"
+            oninput="handleChange(event)"
+            onkeypress="return ( event.charCode === 45 ||event.charCode === 46 || event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+            required
+          />
+          <div class="inputContainer">
+            <input
+              type="radio"
+              name="transactionType"
+              id="credit"
+              checked
+              oninput="handleChange(event)"
+              value="credit"
+              class="inputField"
+            />
+            <label for="credit" class="label">Credit</label>
+          </div>
+          <div class="inputContainer">
+            <input
+              type="radio"
+              id="debit"
+              name="transactionType"
+              oninput="handleChange(event)"
+              value="debit"
+              class="inputField"
+            />
+            <label for="debit" class="label">Debit</label>
+          </div>
+        </div>
+        <button type="submit" value="Submit" class="mod-primary">Save</button>
+        <button onclick="closeDialogBox(event)" class="cancelBtn">
+          Cancel
+        </button>
+      </form>
+    </div>
+    <script src="./js/modal.js"></script>
+  </body>
+</html>

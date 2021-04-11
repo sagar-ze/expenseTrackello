@@ -1,0 +1,14 @@
+body {
+
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#c{
+  background: white;
+  padding: 24px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 90%;
+}

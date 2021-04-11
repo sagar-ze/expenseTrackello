@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Authorize</title>
+    <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
+    
+  </head>
+  <body>
+<div style="display:flex;justify-content:center;align-items:center;">
+    <button type="button" class="mod-primary">Click to authorize</button>
+    <code id="codeBlock">
+    </code>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://trello.com/1/client.js?key=0bbc9033603e68ca1d133bb85fe9504e"></script>
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script>
+    
+      $(document).ready(function() {
+        
+        $("code").hide();
+        
+        // Initialize the Power-Up client library and include your app name and API key
+        var t = window.TrelloPowerUp.iframe({
+          appKey: '0bbc9033603e68ca1d133bb85fe9504e',
+          appName: 'Expense Trackello'
+        });
+
+        let success = (response) => {
+          $("code").html(JSON.stringify(response, null, 2));
+          $("code").show();
+        }
+
+        let error = (error) => {
+          alert(JSON.stringify(error, null, 2));
+        }
+        
+        let makeRequest = (token) => {
+          window.Trello.setToken(token);
+          try {
+            window.Trello.members.get('me', success, error)
+          } catch (err) {
+            // console.log(err)
+          } 
+        }
+        
+        t.getRestApi()
+        .getToken()
+        .then((token) => {
+          if (!token) { 
+            document.querySelector('button').addEventListener('click', function() {
+              t.getRestApi()
+              .authorize({ scope: 'read', expiration: 'never' })
+              .then(function() {
+                t.closePopup();
+              });
+            });
+          } else {
+            $("button").hide();
+            makeRequest(token);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

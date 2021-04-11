@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://js.stripe.com/v3/"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Accounting</title>
+  <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css" />
+  <link rel="stylesheet" href="./css/card-back-section.css" />
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+</head>
+
+<body>
+  <div id="content">
+    <div id="cardTotal" class="header">
+      <label class="card-total">List Total:</label>
+      <button id="unique" disabled style="margin: 0px;
+    height: 30px;
+    margin-top: 12px;
+color:#000;"></button>
+      <span style="margin-top:17px;margin-right:3px;">Currency: </span>
+      <select style="margin-top:17px;cursor:pointer;" onchange="changeFunc()" id="selectField">
+        <option value="&#36;">&#36;</option>
+        <option value="£">£</option>
+        <option value="¥">¥</option>
+        <option value="€">€</option>
+        <option value="CN¥">CN¥ </option>
+      </select>
+      <div style="display:flex;justify-content: center; align-items:center; margin-left:auto;">
+        <button id="credit" class="mod-primary" style="margin-right:0px; border-radius:0px;padding:0px 4px;"
+          onclick="handleSelect('credit')">
+          Credit
+        </button>
+        <!--         <span style="line-height:25px;margin-top:3px;">|</span> -->
+        <button id="debit" class="mod-danger" onclick="handleSelect('debit')"
+          style="margin-left:2px; border-radius:0px;padding:0px 4px; ">
+          Debit
+        </button>
+      </div>
+      <button onclick="downloadCSV(event)" class="export-btn">Export</button>
+    </div>
+    <hr class="row" />
+    <div class="header">
+      <div id="header"></div>
+      <span style="margin-left:auto;">
+        <button onclick="deleteData(event)" type="button" style="margin-left:auto;">
+          Delete
+        </button>
+      </span>
+    </div>
+  </div>
+  <div id="app" class="container"></div>
+  <button class="mod-primary add" type="button" id="myBtn" onclick="handleAdd(event)">
+    Add
+  </button>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>

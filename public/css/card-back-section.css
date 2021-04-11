@@ -1,0 +1,160 @@
+/* #content {
+  outline: 2px dotted red;
+  padding: 5px;
+}
+ */
+code {
+  font-family: SF Mono, Segoe UI Mono, Roboto Mono, Ubuntu Mono, Menlo, Courier,
+    monospace;
+  line-height: 20px;
+  background-color: #8c1d35;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(9, 30, 66, 0.13);
+  color: #8c1d35;
+  padding: 1px 3px;
+  /*   margin: -1px 2px; */
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 53px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #c9284b;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4a8c6a;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4a8c6a;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 300px;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.card-total {
+  padding: 5px 2px 0px 2px;
+  font-weight: 500;
+  font-size: 17px;
+/*   margin-right: 5px; */
+}
+.export-btn {
+  background-color: #17a2b8 !important;
+  color: white;
+  margin-left: 10px;
+  /*   margin-left: auto; */
+}
+.row {
+  padding: 0px;
+  margin: 7px;
+  margin-bottom: 0px;
+  width: 97%;
+}
+.header {
+  display: flex;
+}
+.container {
+  background-color: rgba(9, 30, 66, 0.04);
+  padding-top: 3px;
+  margin-top: 4px;
+}
+.add {
+  margin-top: 20px;
+}
+.label {
+  margin-top: -8px;
+}
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cancelBtn {
+  background-color: #ffc107;
+  color: #fff;
+}
+.inputField {
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}

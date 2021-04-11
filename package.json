@@ -1,0 +1,26 @@
+{
+  "name": "accounting",
+  "version": "0.0.1",
+  "description": "A sample Trello Power-Up that can be used as a acounting tool.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": "",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "confetti-js": "^0.0.18",
+    "stripe": "^8.131.1",
+    "url": "^0.11.0",
+    "oauth": "^0.9.15",
+    "mongoose": "^5.11.13",
+    "lodash": "^4.17.20"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "keywords": [],
+  "license": "MIT"
+}
