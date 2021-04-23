@@ -30,7 +30,7 @@ const createSubscription = async (userId, email, plan, payment_method) => {
   //crate subscription
   const subscription = await stripe.subscriptions.create({
     customer: customer.id,
-    items: [{ price:plan }],
+    items: [{ price: plan }],
     expand: ["latest_invoice.payment_intent"]
   });
   const user = await User.findOne({ trelloId: userId });
@@ -42,9 +42,13 @@ const createSubscription = async (userId, email, plan, payment_method) => {
   //Invoice
   const invoice = subscription.latest_invoice;
   const payment_intent = invoice.payment_intent;
-
   if (payment_intent.status === "succeeded") {
-    console.log("payment succeded");
+    console.log("Success");
+    await User.findByIdAndUpdate(
+      user.id,
+      { payment_intent: payment_intent.id },
+      { $new: true }
+    );
   }
 
   return subscription;
@@ -53,10 +57,9 @@ const createSubscription = async (userId, email, plan, payment_method) => {
 const cancelSubscription = async userId => {
   const user = await User.findOne({ trelloId: userId });
   //cancel at the end of period
-  const subscription =await stripe.subscriptions.update(user.subscriptionId, {
+  const subscription = await stripe.subscriptions.update(user.subscriptionId, {
     cancel_at_period_end: true
   });
-console.log('Subscription',subscription)
   return subscription;
 };
 

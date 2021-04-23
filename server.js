@@ -87,10 +87,17 @@ app.put("/subscriptions", async (req, res) => {
   res.send(await cancelSubscription(userId));
 });
 
-app.post("/user-info", async (req, res) => {
-  console.log("user ingo route is hitted");
+pp.post("/user-info", async (req, res) => {
   const user = await User.findOne({ trelloId: req.body.userId });
+  // console.log("User is", user);
   if (!user) return res.status(200).send(null);
+
+  const charges = await stripe.charges.list({
+    payment_intent: user.payment_intent
+  });
+
+  if( charges?.data[0]?.refunded) return res.status(200).send(null);
+
   const subscriptionInfo = await stripe.subscriptions.retrieve(
     user.subscriptionId
   );
